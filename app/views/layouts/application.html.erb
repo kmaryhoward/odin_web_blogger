@@ -19,5 +19,18 @@
     <main role="main">
     <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
+    <h6>
+      <% if current_user %>
+	      <%= "Logged in as #{current_user.email}" %>
+	      <%= link_to "Logout", :logout, method: :post %>
+ <% else %>
+	 <%= link_to "Register", new_author_path %> |
+         <%= link_to "Login", :login %>
+ <% end %>
+    </h6>
+      <div>
+    <p id="notice"><%= flash[:notice] %></p>
+    <p id="alert"><%= flash[:alert] %></p>
+  </div>
   </body>
 </html>

@@ -1,4 +1,4 @@
-<%= form_with(model: shark, local: true) do |form| %>
+<%= form_with(model: shark, local: true, multipart: true) do |form| %>
   <% if shark.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(shark.errors.count, "error") %> prohibited this shark from being saved:</h2>
@@ -19,6 +19,19 @@
   <div class="field">
     <%= form.label :facts %>
     <%= form.text_area :facts %>
+  </div>
+
+ <div class="field">
+    <%= form.label :tag_list %>
+    <%= form.text_field :tag_list %>
+ </div>
+
+ <div class="field">
+	 <% if @shark.image.exists? %>
+		 <%= image_tag @shark.image.url %><br/>
+	 <% end %>
+    <%= form.label :image, "Attach an Image" %>
+    <%= form.file_field :image %>
   </div>
 
   <div class="actions">

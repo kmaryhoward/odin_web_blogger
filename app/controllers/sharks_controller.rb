@@ -1,5 +1,6 @@
 class SharksController < ApplicationController
   before_action :set_shark, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, except: [:index, :show]
 
   # GET /sharks
   # GET /sharks.json
@@ -69,6 +70,6 @@ class SharksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shark_params
-      params.require(:shark).permit(:name, :facts)
+      params.require(:shark).permit(:name, :facts, :tag_list, :image)
     end
 end

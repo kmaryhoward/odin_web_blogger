@@ -1,0 +1,11 @@
+<h1>Sharks Tagged with <%= @tag.name %></h1>
+
+<ul>
+	<% @tag.sharks.each do |shark| %>
+		<% if shark.name.blank? %>
+			<div></div>
+		<% else %>
+    <li><%= link_to shark.name, shark_path(shark) %></li>
+  <% end %>
+    <% end %>
+</ul>

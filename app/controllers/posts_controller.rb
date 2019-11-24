@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :get_shark 
+  before_action :require_login, except: [:create]
 
   def create
     @post = @shark.posts.create(post_params)

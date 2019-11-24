@@ -10,6 +10,18 @@
   <%= @shark.facts %>
 </p>
 
+<p>
+  Tags:
+  <% @shark.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+  <% end %>
+</p>
+
+<p>
+<% if @shark.image.exists? %>
+<%= image_tag @shark.image.url %></p>
+<% end %>
+
 <h2>Posts</h2>
 
 <%= render 'sharks/posts' %>
